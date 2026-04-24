@@ -1,0 +1,428 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap');
+
+/* ─── Reset & Base ─── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg:        #F5F4F0;
+  --text:      #2C2C2C;
+  --muted:     #7A7A7A;
+  --accent:    #A8B5A2;
+  --border:    #DDDBD6;
+  --glass-bg:  rgba(255,255,255,0.45);
+  --glass-bd:  rgba(255,255,255,0.6);
+  --shadow-sm: 0 4px 24px rgba(0,0,0,0.06);
+  --shadow-img:0 4px 20px rgba(0,0,0,0.10);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 400;
+  line-height: 1.7;
+  font-size: 1rem;
+}
+
+/* ─── Layout ─── */
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+section {
+  padding: 80px 0;
+}
+
+/* ─── Typography ─── */
+h1, h2, h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  letter-spacing: 0.08em;
+}
+
+h1 { font-size: clamp(2.4rem, 5vw, 3.6rem); }
+h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); color: var(--text); margin-bottom: 2rem; }
+h3 { font-size: 1.25rem; margin-bottom: 0.5rem; }
+
+p {
+  color: var(--muted);
+  max-width: 65ch;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+a:hover { opacity: 0.7; }
+
+/* ─── Divider ─── */
+.divider {
+  width: 48px;
+  height: 1px;
+  background: var(--border);
+  margin: 1.5rem 0;
+}
+
+/* ─── Immagini tonde ─── */
+.avatar {
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: var(--shadow-img);
+  display: block;
+  background-color: var(--border);
+  flex-shrink: 0;
+}
+
+/* SVG placeholder inline */
+.avatar-placeholder {
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  box-shadow: var(--shadow-img);
+  flex-shrink: 0;
+  overflow: hidden;
+  background: var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ─── Navbar ─── */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: 18px 0;
+  background: rgba(245,244,240,0.85);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border);
+}
+
+nav .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  font-size: 1.1rem;
+  letter-spacing: 0.1em;
+  color: var(--text);
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-links a {
+  font-size: 0.85rem;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+.nav-links a:hover { color: var(--text); opacity: 1; }
+
+/* ─── HERO ─── */
+#hero {
+  padding-top: 160px;
+  padding-bottom: 80px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-inner {
+  display: flex;
+  align-items: center;
+  gap: 4rem;
+}
+
+.hero-text { flex: 1; }
+
+.hero-tagline {
+  font-size: 1.05rem;
+  color: var(--accent);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.hero-title {
+  margin-bottom: 0.75rem;
+}
+
+.hero-subtitle {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  font-size: 1.35rem;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+  margin-bottom: 1.5rem;
+}
+
+.hero-description {
+  font-size: 0.97rem;
+  line-height: 1.75;
+}
+
+.hero-avatar { align-self: center; }
+
+/* ─── CHI SONO ─── */
+#chi-sono {
+  border-top: 1px solid var(--border);
+}
+
+.chi-sono-inner {
+  display: flex;
+  align-items: flex-start;
+  gap: 3.5rem;
+}
+
+.chi-sono-text { flex: 1; }
+.chi-sono-text p + p { margin-top: 1rem; }
+
+/* ─── SERVIZI ─── */
+#servizi {
+  border-top: 1px solid var(--border);
+}
+
+/* Sfondo leggermente texturizzato per rendere visibile il glassmorphism */
+.servizi-bg {
+  background: linear-gradient(135deg, rgba(168,181,162,0.15) 0%, rgba(221,219,214,0.25) 100%);
+  border-radius: 16px;
+  padding: 48px;
+  position: relative;
+}
+
+.servizi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-bd);
+  box-shadow: var(--shadow-sm);
+  border-radius: 10px;
+  padding: 28px 24px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.10);
+}
+
+.card-icon {
+  font-size: 1.5rem;
+  margin-bottom: 0.75rem;
+  display: block;
+}
+
+.card h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.4rem;
+  letter-spacing: 0.06em;
+}
+
+.card p {
+  font-size: 0.88rem;
+  line-height: 1.6;
+}
+
+/* ─── APPROCCIO ─── */
+#approccio {
+  border-top: 1px solid var(--border);
+}
+
+.approccio-bg {
+  background: linear-gradient(160deg, rgba(168,181,162,0.12) 0%, rgba(245,244,240,0.8) 100%);
+  border-radius: 16px;
+  padding: 48px;
+}
+
+.slogan-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.slogan-item {
+  padding: 2rem 0;
+  text-align: center;
+  border-top: 1px solid var(--border);
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-bd);
+  box-shadow: var(--shadow-sm);
+  border-radius: 8px;
+  margin-bottom: 16px;
+  padding: 2rem 2.5rem;
+}
+
+.slogan-item:last-child {
+  margin-bottom: 0;
+}
+
+.slogan-item p {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 1.6rem;
+  font-weight: 300;
+  color: var(--text);
+  max-width: 100%;
+  margin: 0 auto;
+  line-height: 1.45;
+}
+
+/* ─── CONTATTI ─── */
+#contatti {
+  border-top: 1px solid var(--border);
+}
+
+.contatti-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.97rem;
+}
+
+.contact-label {
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  width: 80px;
+  flex-shrink: 0;
+}
+
+.contact-value {
+  color: var(--text);
+}
+
+.contact-value a {
+  color: var(--text);
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 1px;
+  transition: border-color 0.2s, color 0.2s;
+}
+.contact-value a:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  opacity: 1;
+}
+
+/* ─── FOOTER ─── */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 32px 0;
+  text-align: center;
+  font-size: 0.82rem;
+  color: var(--muted);
+  letter-spacing: 0.05em;
+}
+
+/* ─── Animazioni fade-in ─── */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ─── Immagine decorativa Servizi (ingranaggi) ─── */
+.servizi-deco {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 70%;
+  max-width: 520px;
+  opacity: 0.08;
+  object-fit: cover;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* ─── Immagine decorativa Chi sono (cerchi) ─── */
+.cerchi-deco {
+  float: right;
+  margin: 0 0 1rem 1.5rem;
+  width: 180px;
+  max-width: 180px;
+  opacity: 0.6;
+  filter: grayscale(40%);
+  border-radius: 4px;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* ─── Responsive ─── */
+@media (max-width: 768px) {
+  .servizi-deco,
+  .cerchi-deco {
+    display: none;
+  }
+}
+
+@media (max-width: 680px) {
+  .hero-inner {
+    flex-direction: column-reverse;
+    gap: 2rem;
+    text-align: center;
+  }
+
+  .hero-avatar { align-self: center; }
+
+  .chi-sono-inner {
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+  }
+
+  .chi-sono-text p { max-width: 100%; }
+
+  .nav-links { display: none; }
+
+  .servizi-bg, .approccio-bg {
+    padding: 28px 20px;
+  }
+
+  .slogan-item p {
+    font-size: 1.25rem;
+  }
+}
